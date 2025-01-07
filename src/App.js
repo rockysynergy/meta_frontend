@@ -1,20 +1,24 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import Nav from './Nav';
+import HomePage from './HomePage';
+import BookingPage from './BookingPage';
 
 import React from 'react';
-import Header from './Header';
-import Nav from './Nav';
-import Main from './Main';
-import Footer from './Footer';
 
 const App = () => {
     return (
-        <>
-            <Header />
-            <Nav />
-            <Main />
-            <Footer />
-        </>
+        <div className="App">
+            <Router>
+                <Nav />
+                <Switch>
+                    <Route exact path="/" component={HomePage} />
+                    <Route exact path="/booking" component={BookingPage} />
+                </Switch>
+            </Router>
+      </div>
     );
 };
 
