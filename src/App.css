@@ -24,7 +24,6 @@ body {
   min-height: 400px;
 }
 
-
 @media (min-width: 576px) { 
   #hero .img-holder {
       position: relative;
@@ -72,7 +71,6 @@ body {
   flex: 1 1 calc(33.333% - 20px);
 }
 
-
 #special .img-cap {
   margin: 0;
 }
@@ -92,7 +90,6 @@ body {
   }
 }
 
-
 #special .card .img-cap {
   height: 180px;
   overflow: hidden;
@@ -102,7 +99,6 @@ body {
   font-weight: bold;
   color: #EE9972;
 }
-
 
 #testimonials {
   background-color: #e2e2e2;
@@ -125,7 +121,6 @@ body {
 #about .row {
   margin: 45px auto;
 }
-
 
 #about .images {
   position: relative;
@@ -155,3 +150,53 @@ body {
   padding-bottom: 35px;
 }
 
+/* Booking Page Styles */
+#booking-page {
+  padding: 50px 0;
+}
+
+#booking-page h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#booking-page form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+#booking-page label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+#booking-page input[type="date"],
+#booking-page input[type="number"],
+#booking-page select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#booking-page input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #495E57;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#booking-page input[type="submit"]:hover {
+  background-color: #333;
+}
