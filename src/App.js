@@ -5,16 +5,19 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Nav from './Nav';
 import HomePage from './HomePage';
 import BookingPage from './BookingPage';
+import ConfirmedBooking from './ConfirmedBooking'; // Import the ConfirmedBooking component
 
-const initializeTimes = () => {
-    return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+import { fetchAPI, submitAPI } from './api';
+
+export const initializeTimes = () => {
+    const today = new Date();
+    return fetchAPI(today);
 };
 
-const updateTimes = (state, action) => {
+export const updateTimes = (state, action) => {
     switch (action.type) {
         case 'UPDATE_TIMES':
-            // For now, return the same available times regardless of the date
-            return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+            return fetchAPI(new Date(action.date));
         default:
             return state;
     }
@@ -26,6 +29,10 @@ const App = () => {
     const [guests, setGuests] = useState(1);
     const [occasion, setOccasion] = useState("");
     const [availableTimes, dispatch] = useReducer(updateTimes, [], initializeTimes);
+
+    const submitForm = (formData) => {
+        return submitAPI(formData);
+    };
 
     return (
         <div className="App">
@@ -49,9 +56,11 @@ const App = () => {
                                 setOccasion={setOccasion}
                                 availableTimes={availableTimes}
                                 dispatch={dispatch}
+                                submitForm={submitForm} 
                             />
                         )}
                     />
+                    <Route exact path="/confirmed" component={ConfirmedBooking} />
                 </Switch>
             </Router>
         </div>
