@@ -6,12 +6,12 @@ import logoImg from './assets/images/logo.svg';
 const Footer = () => {
     return (
         <footer id="footer">
-        <div class="container">
-            <div class="row gx-5">
-                <div class="col-sm-3">
-                    <img src={logoImg} alt="" srcset="" />
+        <div className="container">
+            <div className="row gx-5">
+                <div className="col-sm-3">
+                    <img src={logoImg} alt=""  />
                 </div>
-                <div class="col-sm-3">
+                <div className="col-sm-3">
                     <h3>Doormat Navigation</h3>
                     <ul>
                         <li>Nav 1</li>
@@ -22,7 +22,7 @@ const Footer = () => {
                         <li>Nav 6</li>
                     </ul>
                 </div>
-                <div class="col-sm-3">
+                <div className="col-sm-3">
                     <h3>Contact</h3>
                     <ul>
                         <li>Address</li>
@@ -30,7 +30,7 @@ const Footer = () => {
                         <li>email</li>
                     </ul>
                 </div>
-                <div class="col-sm-3">
+                <div className="col-sm-3">
                     <h3>Social MediaLinks</h3>
                     <ul>
                         <li>littleLemon@facebook</li>
