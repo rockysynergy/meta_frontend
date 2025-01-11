@@ -1,14 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
-import React, { useState } from "react";
 import './App.css';
-import { useHistory } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 function BookingPage({ date, setDate, time, setTime, guests, setGuests, occasion, setOccasion, availableTimes, dispatch, submitForm }) {
     const [showModal, setShowModal] = useState(false);
     const [formData, setFormData] = useState({});
+    const [isFormValid, setIsFormValid] = useState(false);
     const history = useHistory();
-    
+    const formRef = useRef(null); // Create a ref for the form element
+
+    useEffect(() => {
+        // Check if all fields are valid
+        const isValid = date && time && guests > 0 && occasion;
+        setIsFormValid(isValid);
+    }, [date, time, guests, occasion]);
+
     const handleDateChange = (e) => {
         setDate(e.target.value);
         dispatch({ type: 'UPDATE_TIMES', date: e.target.value });
@@ -39,7 +45,7 @@ function BookingPage({ date, setDate, time, setTime, guests, setGuests, occasion
       <div id="booking-page">
         <h1>Book a Table</h1>
         
-        <form>
+        <form ref={formRef} onSubmit={handleSubmit}>
           <label htmlFor="res-date">Choose date</label>
           <input type="date" id="res-date" value={date} onChange={handleDateChange} required />
 
@@ -55,8 +61,6 @@ function BookingPage({ date, setDate, time, setTime, guests, setGuests, occasion
           <input type="number" placeholder="1" min="1" max="10" id="guests" value={guests} onChange={handleGuestsChange} required />
           
           <label htmlFor="occasion">Occasion</label>
-          <select id="occasion" value={occasion} onChange={handleOccasionChange} required>
-            <option value="" disabled>Select an occasion</option>
           <select id="occasion" value={occasion} onChange={handleOccasionChange} required>
             <option value="" disabled>Select an occasion</option>
             <option value="Birthday">Birthday</option>
